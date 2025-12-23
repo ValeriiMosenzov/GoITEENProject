@@ -388,9 +388,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 44870555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a069c458ce07b4843b8edf8e937c1e25, type: 3}
+  m_Script: {fileID: 11500000, guid: 72548b510b5dd1c4bbe4beeb186c94f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnEnemyScript: {fileID: 0}
+  maxHP: 60
 --- !u!1001 &62000267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7776,7 +7778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &390721030
 RectTransform:
   m_ObjectHideFlags: 0
