@@ -12,7 +12,7 @@ public class SwordAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && CanAttack)
+        if (Input.GetMouseButtonDown(0) && CanAttack && Sword != null)
         {
             Attack();
         }

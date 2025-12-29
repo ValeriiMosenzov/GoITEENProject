@@ -9,6 +9,7 @@ public class PickUpTool : MonoBehaviour
     private KeyCode KeyToPickUp;
     private GameObject PickUp;
     private GameObject PickUpClone;
+    public GameObject SwordPosition;
     public GameObject Model = null;
     public GameObject weaponHolder;
     public Transform slot1;
@@ -44,6 +45,7 @@ public class PickUpTool : MonoBehaviour
                     if (i == 1)
                     {
                         PickUpClone = Instantiate(PickUp, slot1);
+                        PickUpClone.transform.position = SwordPosition.transform.position;
                         Destroy(Model);
                         CanPickUp = false;
                     }
@@ -59,6 +61,7 @@ public class PickUpTool : MonoBehaviour
                         if (i == 1)
                         {
                             PickUpClone = Instantiate(PickUp, slot2);
+                            PickUpClone.transform.position = SwordPosition.transform.position;
                             Destroy(Model);
                             CanPickUp = false;
                         }
@@ -74,6 +77,7 @@ public class PickUpTool : MonoBehaviour
                             if (i == 1)
                             {
                                 PickUpClone = Instantiate(PickUp, slot3);
+                                PickUpClone.transform.position = SwordPosition.transform.position;
                                 Destroy(Model);
                                 CanPickUp = false;
                             }
@@ -89,6 +93,7 @@ public class PickUpTool : MonoBehaviour
                                 if (i == 1)
                                 {
                                     PickUpClone = Instantiate(PickUp, slot4);
+                                    PickUpClone.transform.position = SwordPosition.transform.position;
                                     Destroy(Model);
                                     CanPickUp = false;
                                 }

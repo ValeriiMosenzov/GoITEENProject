@@ -10,10 +10,11 @@ public class SlotEquipScript : MonoBehaviour
     public int SlotId;
     public KeyCode SlotKey;
     public GameObject Inventory;
+    public SwordAttack SwordAttack;
 
     private void Start()
     {
-        switch(SlotId)
+        switch (SlotId)
         {
             case 1:
                 SlotKey = KeyCode.Alpha1;
@@ -67,6 +68,10 @@ public class SlotEquipScript : MonoBehaviour
             foreach (Transform child in transform)
             {
                 child.GetComponent<MeshRenderer>().enabled = true;
+                if (child.CompareTag("Sword"))
+                {
+                    SwordAttack.Sword = child.gameObject;
+                }
                 foreach (var script in child.GetComponents<MonoBehaviour>())
                 {
                     script.enabled = true;

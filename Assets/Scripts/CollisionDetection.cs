@@ -22,7 +22,7 @@ public class CollisionDetection : MonoBehaviour
 
             Vector3 hitPoint = other.ClosestPoint(transform.position);
 
-            
+
             GameObject hitEffect = Instantiate(
                 HitParticle,
                 hitPoint,
@@ -32,6 +32,7 @@ public class CollisionDetection : MonoBehaviour
             hitEffect.transform.SetParent(other.transform);
             enemy.SetHitEffect(hitEffect);
             enemy.TakeDamage(Stats.damage);
+            Debug.Log("A");
             StartCoroutine(ResetDb());
         }
     }
