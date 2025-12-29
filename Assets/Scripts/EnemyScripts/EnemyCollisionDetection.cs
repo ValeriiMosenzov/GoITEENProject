@@ -14,7 +14,7 @@ public class EnemyCollisionDetection : MonoBehaviour
     {
         //bloodPoolAI = FindObjectOfType<BloodPoolAI>();
         if (!bloodPool) bloodPool = FindObjectOfType<BloodPool>();
-        EAS = transform.parent.GetComponentInChildren<EnemyAttackScript>();
+        EAS = transform.parent.parent.parent.GetComponentInChildren<EnemyAttackScript>();
     }
 
     private void OnTriggerStay(Collider other)

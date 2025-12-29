@@ -26,7 +26,7 @@ public class EnemyAttackScript : MonoBehaviour
     private void Start()
     {
         PlayerScript = Player.GetComponent<PlayerScript>();
-        Sword = transform.parent.GetChild(0).gameObject;
+        Sword = transform.parent.GetChild(4).GetChild(0).GetChild(1).gameObject;
     }
 
 
@@ -34,9 +34,8 @@ public class EnemyAttackScript : MonoBehaviour
     {
         if (isTriggered && cd == false)
         {
-            Animator anim = Sword.GetComponent<Animator>();
+            Animator anim = Sword.transform.parent.GetComponent<Animator>();
             anim.SetTrigger("Attack");
-            isAttacking = true;
             cd = true;
             Debug.Log("Punch");
             StartCoroutine(ResetCooldown());
@@ -66,6 +65,7 @@ public class EnemyAttackScript : MonoBehaviour
     IEnumerator WaitForDamage()
     {
         yield return new WaitForSeconds(0.4f);
+        Sword.GetComponent<BoxCollider>().enabled = true;
         isAttacking = true;
         StartCoroutine(ResetAttack());
     }
@@ -73,6 +73,7 @@ public class EnemyAttackScript : MonoBehaviour
     IEnumerator ResetAttack()
     {
         yield return new WaitForSeconds(0.4f);
+        Sword.GetComponent<BoxCollider>().enabled = false;
         isAttacking = false;
     }
 }

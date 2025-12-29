@@ -18,6 +18,10 @@ public class WalkEnemyScript : MonoBehaviour
     public float rotationSpeed = 5f;
 
 
+    //Animator
+    public Animator root;
+
+
     //Int
     public int currentPoint = 0;
 
@@ -29,6 +33,7 @@ public class WalkEnemyScript : MonoBehaviour
     private void Start()
     {
         StateAliveOrDead = transform.GetComponent<EnemyStateAliveOrDeadScript>();
+        root = transform.GetChild(4).GetChild(0).GetComponent<Animator>();
     }
 
 
@@ -57,9 +62,11 @@ public class WalkEnemyScript : MonoBehaviour
                 points[currentPoint].position,
                 speed * Time.deltaTime
             );
+            root.SetBool("IsRunning", true);
 
             if (Vector3.Distance(transform.position, points[currentPoint].position) < 0.05f)
             {
+                root.SetBool("IsRunning", false);
                 StartCoroutine(WaitAndMoveNext());
             }
         }

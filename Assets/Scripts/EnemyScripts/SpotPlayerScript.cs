@@ -11,10 +11,16 @@ public class SpotPlayerScript : MonoBehaviour
     //Scripts
     public WalkEnemyScript WalkEnemyScript;
 
+
+    //Animatior
+    public Animator root;
+
+
     //Data
     public float speed;
     public float rotationSpeed;
     public bool spotted = false;
+    public bool once = false;
 
 
     private void Start()
@@ -23,6 +29,7 @@ public class SpotPlayerScript : MonoBehaviour
         WalkEnemyScript = Enemy.GetComponent<WalkEnemyScript>();
         speed = WalkEnemyScript.speed;
         rotationSpeed = WalkEnemyScript.rotationSpeed;
+        root = transform.parent.GetChild(4).GetChild(0).GetComponent<Animator>();
     }
 
     private void Update()
@@ -41,6 +48,7 @@ public class SpotPlayerScript : MonoBehaviour
                 Player.position,
                 speed * Time.deltaTime
             );
+            root.SetBool("IsRunning", true);
         }
     }
 
