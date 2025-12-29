@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     private int currentHP;
     public int maxHP;
+    public int playerMoney;
     private GameObject hitEffect;
     private BloodPool bloodPool;
 
@@ -13,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     {
         maxHP = 100;
         currentHP = maxHP;
+        playerMoney = 0;
     }
 
     private void Awake()

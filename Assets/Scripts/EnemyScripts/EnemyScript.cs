@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyScript : MonoBehaviour
 {
     //Scripts
     public SpawnEnemyScript SpawnEnemyScript;
+    public PlayerScript PlayerScript;
 
 
     //Data
@@ -15,10 +17,16 @@ public class EnemyScript : MonoBehaviour
     private BloodPool bloodPool;
 
 
+    //GameObjects
+    public GameObject SwordToCopy;
+    public GameObject ModelsToPickUp;
+
+
     private void Start()
     {
         currentHP = maxHP;
         SpawnEnemyScript = transform.GetComponent<SpawnEnemyScript>();
+        ModelsToPickUp = SwordToCopy.transform.parent.gameObject;
     }
 
     private void Awake()
@@ -62,6 +70,15 @@ public class EnemyScript : MonoBehaviour
                 bloodPool.returnBlood(go);
             }
         }
+
+        int rnd = Random.Range(0, 5);
+        if (rnd == 3)
+        {
+            GameObject droppedSword = Instantiate(SwordToCopy, ModelsToPickUp.transform);
+            droppedSword.transform.position = transform.position;
+        }
+
+        PlayerScript.playerMoney += 10;
 
         SpawnEnemyScript.Despawn();
         Debug.Log($"{name} погиб!");

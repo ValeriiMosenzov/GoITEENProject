@@ -14,7 +14,8 @@ public class DamageUpgrade : MonoBehaviour
     public Text levelText;
     public Text costText;
 
-    public int playerMoney = 500; // тимчасово
+
+    public PlayerScript PlayerScript;
 
     private void Start()
     {
@@ -32,13 +33,13 @@ public class DamageUpgrade : MonoBehaviour
 
         int cost = GetUpgradeCost();
 
-        if (playerMoney < cost)
+        if (PlayerScript.playerMoney < cost)
         {
             Debug.Log("Недостатньо грошей!");
             return;
         }
 
-        playerMoney -= cost;
+        PlayerScript.playerMoney -= cost;
         level++;
 
         weaponStats.damage = weaponStats.baseDamage + level * damagePerLevel;

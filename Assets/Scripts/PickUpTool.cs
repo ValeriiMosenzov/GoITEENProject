@@ -44,10 +44,10 @@ public class PickUpTool : MonoBehaviour
                     i++;
                     if (i == 1)
                     {
-                        PickUpClone = Instantiate(PickUp, slot1);
-                        PickUpClone.transform.position = SwordPosition.transform.position;
                         Destroy(Model);
                         CanPickUp = false;
+                        PickUpClone = Instantiate(PickUp, slot1);
+                        PickUpClone.transform.position = SwordPosition.transform.position;
                     }
                     else
                     {
@@ -60,10 +60,10 @@ public class PickUpTool : MonoBehaviour
                         i++;
                         if (i == 1)
                         {
-                            PickUpClone = Instantiate(PickUp, slot2);
-                            PickUpClone.transform.position = SwordPosition.transform.position;
                             Destroy(Model);
                             CanPickUp = false;
+                            PickUpClone = Instantiate(PickUp, slot2);
+                            PickUpClone.transform.position = SwordPosition.transform.position;
                         }
                         else
                         {
@@ -76,10 +76,10 @@ public class PickUpTool : MonoBehaviour
                             i++;
                             if (i == 1)
                             {
-                                PickUpClone = Instantiate(PickUp, slot3);
-                                PickUpClone.transform.position = SwordPosition.transform.position;
                                 Destroy(Model);
                                 CanPickUp = false;
+                                PickUpClone = Instantiate(PickUp, slot3);
+                                PickUpClone.transform.position = SwordPosition.transform.position;
                             }
                             else
                             {
@@ -92,10 +92,10 @@ public class PickUpTool : MonoBehaviour
                                 i++;
                                 if (i == 1)
                                 {
-                                    PickUpClone = Instantiate(PickUp, slot4);
-                                    PickUpClone.transform.position = SwordPosition.transform.position;
                                     Destroy(Model);
                                     CanPickUp = false;
+                                    PickUpClone = Instantiate(PickUp, slot4);
+                                    PickUpClone.transform.position = SwordPosition.transform.position;
                                 }
                             }
                         }
