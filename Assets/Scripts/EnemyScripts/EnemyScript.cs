@@ -11,7 +11,7 @@ public class EnemyScript : MonoBehaviour
 
 
     //Data
-    private int currentHP;
+    public int currentHP;
     public int maxHP;
     private GameObject hitEffect;
     private BloodPool bloodPool;

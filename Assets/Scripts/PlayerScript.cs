@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    private int currentHP;
+    public int currentHP;
     public int maxHP;
     public int playerMoney;
+    public bool canBePressed = false;
     private GameObject hitEffect;
     private BloodPool bloodPool;
+
 
     private void Start()
     {
@@ -23,6 +25,17 @@ public class PlayerScript : MonoBehaviour
         if (!bloodPool) bloodPool = FindObjectOfType<BloodPool>();
     }
 
+    private void Update()
+    {
+
+        if (Input.GetKeyUp(KeyCode.R) && canBePressed)
+        {
+            Respawn();
+        }
+    }
+
+    
+
     public void SetHitEffect(GameObject effect)
     {
         hitEffect = effect;
@@ -36,12 +49,12 @@ public class PlayerScript : MonoBehaviour
         if (currentHP <= 0)
         {
             Die();
-            currentHP = maxHP;
         }
     }
 
     private void Die()
     {
+        currentHP = maxHP;
         var toDespawn = new List<GameObject>();
         foreach (Transform child in transform)
         {
@@ -58,9 +71,33 @@ public class PlayerScript : MonoBehaviour
                 bloodPool.returnBlood(go);
             }
         }
-        Vector3 spawnPos = new Vector3(0, 1, 0);
+        Vector3 spawnPos = new Vector3(112.511f, 1.138f, 193.379f);
 
-        Debug.Log($"{name} погиб!");
+        playerMoney -= 50;
+        gameObject.transform.position = spawnPos;
+    }
+
+    private void Respawn()
+    {
+        currentHP = maxHP;
+        var toDespawn = new List<GameObject>();
+        foreach (Transform child in transform)
+        {
+            if (child.name == "BloodSprayFX(Clone)")
+            {
+                toDespawn.Add(child.gameObject);
+            }
+        }
+        foreach (var go in toDespawn)
+        {
+            //bloodPoolAI.Despawn(go);
+            if (bloodPool != null)
+            {
+                bloodPool.returnBlood(go);
+            }
+        }
+        Vector3 spawnPos = new Vector3(112.511f, 1.138f, 193.379f);
+
         gameObject.transform.position = spawnPos;
     }
 }
